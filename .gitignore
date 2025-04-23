@@ -1,0 +1,114 @@
+################################
+# Compilacion y artefactos .NET
+################################
+**/bin/
+**/obj/
+Debug/
+Release/
+
+################################
+# NuGet
+################################
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+################################
+# IDE
+################################
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.DotSettings.user
+
+# VS Code
+.vscode/
+
+################################
+# Claude / AI
+################################
+CLAUDE.md
+AGENTS.md
+.claude/
+
+################################
+# Tests
+################################
+TestResults/
+*.trx
+coverage/
+*.coverage
+*.coveragexml
+
+################################
+# Logs
+################################
+*.log
+logs/
+
+################################
+# Publicacion y despliegue
+################################
+*.Publish.xml
+*.azurePubxml.*
+*.deploy.cmd
+local.settings.json
+
+################################
+# Entity Framework
+################################
+*.edmx.sql
+
+################################
+# Cache y BBDD locales
+################################
+*.cache
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+################################
+# Binarios
+################################
+*.dll
+*.exe
+*.pdb
+*.mdb
+
+################################
+# macOS
+################################
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+*.icloud
+
+################################
+# Windows
+################################
+Thumbs.db
+ehthumbs.db

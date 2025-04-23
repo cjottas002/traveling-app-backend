@@ -1,0 +1,26 @@
+@host = http://localhost:5090
+@token = {{login.response.body.$.data.token}}
+
+### Register
+# @name register
+POST {{host}}/api/Account/Register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "Test1234"
+}
+
+### Login
+# @name login
+POST {{host}}/api/Account/Login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "Test1234"
+}
+
+### List Users (requires auth)
+GET {{host}}/api/User/List?pageIndex=0&pageSize=10&orderBy=UserName&orderByAsc=true
+Authorization: Bearer {{token}}

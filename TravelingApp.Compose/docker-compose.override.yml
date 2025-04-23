@@ -1,0 +1,41 @@
+services:
+  travelingapp:
+    container_name: travelingapp-container
+    image: "${DOCKER_REGISTRY-}travelingapp:${IMAGE_TAG}"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ASPNETCORE_URLS=http://+:${ASPNETCORE_HTTP_PORTS}
+      - ConnectionStrings__TravelingAppDbConnection=Host=postgres;Port=5432;Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD}
+    ports:
+      - "${TRAVELINGAPP_PORT}:${ASPNETCORE_HTTP_PORTS}"
+    deploy:
+      resources:
+        limits:
+          cpus:   "${LIMIT_CPUS}"
+          memory: "${LIMIT_MEMORY}"
+        reservations:
+          cpus:   "${RESERVE_CPUS}"
+          memory: "${RESERVE_MEMORY}"
+    restart: "${RESTART_POLICY}"
+
+  postgres:
+    container_name: postgres-container
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "${DB_POSTGRES_PORT}:5432"
+    restart: "${RESTART_POLICY}"
+
+  redis:
+    container_name: redis-container
+    command: [
+      "redis-server",
+      "--save", "",
+      "--appendonly", "no",
+      "--loglevel", "warning"
+    ]
+    ports:
+      - "${DB_REDIS_PORT}:6379"
+    restart: "${RESTART_POLICY}"
