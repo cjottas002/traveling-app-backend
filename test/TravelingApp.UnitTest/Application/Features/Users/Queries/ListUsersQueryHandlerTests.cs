@@ -101,5 +101,6 @@ namespace TravelingApp.UnitTest.Application.Features.Users.Queries
     internal class TestDbContext(DbContextOptions<TestDbContext> options) : DbContext(options), IAppDbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Destination> Destinations { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace TravelingApp.Ui
 
             services.Configure<RedisOptions>(configuration.GetSection(RedisOptions.SectionName));
 
+            services.AddHttpContextAccessor();
             services.AddControllers();
 
             services.AddSwaggerGen(options =>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TravelingApp.Infraestructure.Context;
@@ -11,9 +12,11 @@ using TravelingApp.Infraestructure.Context;
 namespace TravelingApp.Infraestructure.Migrations
 {
     [DbContext(typeof(TravelingAppDbContext))]
-    partial class TravelingAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260401170515_AddDestinations")]
+    partial class AddDestinations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

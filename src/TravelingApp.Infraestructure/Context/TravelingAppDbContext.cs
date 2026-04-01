@@ -34,13 +34,15 @@ namespace TravelingApp.Infraestructure.Context
             foreach (var entry in entries)
             {
                 if (entry.Entity is User user)
-                {
                     user.UpdatedAt = DateTime.UtcNow;
-                }
+
+                if (entry.Entity is Destination destination)
+                    destination.UpdatedAt = DateTime.UtcNow;
             }
 
             return base.SaveChangesAsync(cancellationToken);
         }
 
+        public DbSet<Destination> Destinations { get; set; }
     }
 }
