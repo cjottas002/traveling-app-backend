@@ -50,6 +50,40 @@ namespace TravelingApp.Infraestructure
             }
 
             await context.SaveChangesAsync();
+
+            await SeedDestinationsAsync();
+        }
+
+        private async Task SeedDestinationsAsync()
+        {
+            if (context.Destinations.Any()) return;
+
+            var destinations = new List<Destination>
+            {
+                new()
+                {
+                    Id = Guid.Parse("a1b2c3d4-0001-0001-0001-000000000001"),
+                    Name = "Playa de Cancún",
+                    Description = "Hermosas playas de arena blanca y aguas turquesa en la Riviera Maya",
+                    Country = "México",
+                    ImageUrl = "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800",
+                    Category = "beach",
+                    CreatedBy = "1234567A"
+                },
+                new()
+                {
+                    Id = Guid.Parse("a1b2c3d4-0001-0001-0001-000000000002"),
+                    Name = "Alpes Suizos",
+                    Description = "Montañas nevadas espectaculares con vistas panorámicas",
+                    Country = "Suiza",
+                    ImageUrl = "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800",
+                    Category = "mountain",
+                    CreatedBy = "1234567A"
+                }
+            };
+
+            await context.Destinations.AddRangeAsync(destinations);
+            await context.SaveChangesAsync();
         }
     }
 }
