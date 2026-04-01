@@ -62,22 +62,22 @@ namespace TravelingApp.Infraestructure
             {
                 new()
                 {
-                    Id = Guid.Parse("a1b2c3d4-0001-0001-0001-000000000001"),
-                    Name = "Playa de Cancún",
-                    Description = "Hermosas playas de arena blanca y aguas turquesa en la Riviera Maya",
-                    Country = "México",
-                    ImageUrl = "local:destination_cancun",
-                    Category = "beach",
+                    Id = Guid.Parse("a1b2c3d4-0001-0001-0001-000000000003"),
+                    Name = "Tokio",
+                    Description = "La ciudad más vibrante de Asia, mezcla perfecta de tradición y modernidad",
+                    Country = "Japón",
+                    ImageUrl = "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
+                    Category = "city",
                     CreatedBy = "1234567A"
                 },
                 new()
                 {
-                    Id = Guid.Parse("a1b2c3d4-0001-0001-0001-000000000002"),
-                    Name = "Alpes Suizos",
-                    Description = "Montañas nevadas espectaculares con vistas panorámicas",
-                    Country = "Suiza",
-                    ImageUrl = "local:destination_alps",
-                    Category = "mountain",
+                    Id = Guid.Parse("a1b2c3d4-0001-0001-0001-000000000004"),
+                    Name = "Amazonas",
+                    Description = "La selva tropical más grande del mundo, biodiversidad única",
+                    Country = "Brasil",
+                    ImageUrl = "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800",
+                    Category = "nature",
                     CreatedBy = "1234567A"
                 }
             };
