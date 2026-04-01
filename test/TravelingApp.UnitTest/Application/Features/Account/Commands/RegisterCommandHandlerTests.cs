@@ -5,7 +5,7 @@ using NUnit.Framework;
 using TravelingApp.Application.Features.Account.Commands.Register;
 using TravelingApp.Domain.Entities;
 
-namespace TravelingApp.UnitTest.Features.Account.Commands
+namespace TravelingApp.UnitTest.Application.Features.Account.Commands
 {
     [TestFixture]
     public class RegisterCommandHandlerTests
@@ -31,11 +31,14 @@ namespace TravelingApp.UnitTest.Features.Account.Commands
             _userManagerMock.Setup(m => m.FindByNameAsync(command.Username!)).ReturnsAsync((User?)null);
             _userManagerMock.Setup(m => m.CreateAsync(It.IsAny<User>(), command.Password!))
                 .ReturnsAsync(IdentityResult.Success);
+            _userManagerMock.Setup(m => m.AddToRoleAsync(It.IsAny<User>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Success);
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
             result.Success.Should().BeTrue();
             result.Data?.IsRegistered.Should().BeTrue();
+            _userManagerMock.Verify(m => m.AddToRoleAsync(It.IsAny<User>(), "Customer"), Times.Once);
         }
 
         [Test]

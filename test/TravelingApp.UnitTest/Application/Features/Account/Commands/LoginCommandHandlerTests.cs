@@ -8,7 +8,7 @@ using TravelingApp.Application.Configuration;
 using TravelingApp.Application.Features.Account.Commands.Login;
 using TravelingApp.Domain.Entities;
 
-namespace TravelingApp.UnitTest.Features.Account.Commands
+namespace TravelingApp.UnitTest.Application.Features.Account.Commands
 {
     [TestFixture]
     public class LoginCommandHandlerTests

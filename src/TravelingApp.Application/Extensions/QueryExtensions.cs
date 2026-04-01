@@ -111,16 +111,14 @@ namespace TravelingApp.Application.Extensions
             Expression propertyAccess = parameter;
             PropertyInfo? propertyInfo = null;
 
-            if (propertyInfo is null) throw new InvalidOperationException($"No se encontró la propiedad '{propertyName}' en el tipo {typeof(TEntity).Name}.");
-
             foreach (var member in propertyName.Split('.'))
             {
-                propertyInfo = propertyAccess.Type.GetProperty(member, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic) 
-                    ?? throw new ArgumentException($"Property '{member}' not found on type '{propertyAccess.Type.FullName}'.");
+                propertyInfo = propertyAccess.Type.GetProperty(member, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                    ?? throw new InvalidOperationException($"No se encontró la propiedad '{member}' en el tipo {propertyAccess.Type.Name}.");
                 propertyAccess = Expression.MakeMemberAccess(propertyAccess, propertyInfo);
             }
 
-            resultType = propertyInfo.PropertyType;
+            resultType = propertyInfo!.PropertyType;
             return Expression.Lambda(propertyAccess, parameter);
         }
 
