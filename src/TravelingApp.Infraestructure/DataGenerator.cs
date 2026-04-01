@@ -66,7 +66,7 @@ namespace TravelingApp.Infraestructure
                     Name = "Playa de Cancún",
                     Description = "Hermosas playas de arena blanca y aguas turquesa en la Riviera Maya",
                     Country = "México",
-                    ImageUrl = "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800",
+                    ImageUrl = "local:destination_cancun",
                     Category = "beach",
                     CreatedBy = "1234567A"
                 },
@@ -76,7 +76,7 @@ namespace TravelingApp.Infraestructure
                     Name = "Alpes Suizos",
                     Description = "Montañas nevadas espectaculares con vistas panorámicas",
                     Country = "Suiza",
-                    ImageUrl = "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800",
+                    ImageUrl = "local:destination_alps",
                     Category = "mountain",
                     CreatedBy = "1234567A"
                 }
