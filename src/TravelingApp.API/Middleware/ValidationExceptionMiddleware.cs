@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TravelingApp.Application.Models;
 
-namespace TravelingApp.Ui.Middleware
+namespace TravelingApp.API.Middleware
 {
     public class ValidationExceptionMiddleware(RequestDelegate next)
     {

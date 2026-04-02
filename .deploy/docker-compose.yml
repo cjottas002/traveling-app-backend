@@ -4,7 +4,7 @@ services:
     image: traveling-app-alpine
     build:
       context: ..
-      dockerfile: src/TravelingApp.Ui/Dockerfile
+      dockerfile: src/TravelingApp.API/Dockerfile
     depends_on:
       postgres-traveling-app:
         condition: service_healthy

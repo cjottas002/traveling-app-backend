@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelingApp.Infraestructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelingApp.UnitTest", "test\TravelingApp.UnitTest\TravelingApp.UnitTest.csproj", "{3FF98C00-AF65-49CD-A35D-A259A413926D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelingApp.Ui", "src\TravelingApp.Ui\TravelingApp.Ui.csproj", "{CA951684-E127-4A44-A921-50BDD3B42205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelingApp.API", "src\TravelingApp.API\TravelingApp.API.csproj", "{CA951684-E127-4A44-A921-50BDD3B42205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelingApp.Application", "src\TravelingApp.Application\TravelingApp.Application.csproj", "{494BFCC9-4853-45E9-B720-5A910CF3CF0A}"
 EndProject

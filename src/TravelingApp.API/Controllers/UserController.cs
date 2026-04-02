@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TravelingApp.Application.Features.Users.Queries.ListUsers;
 
-namespace TravelingApp.Ui.Controllers
+namespace TravelingApp.API.Controllers
 {
     [ApiController]
     [Authorize]

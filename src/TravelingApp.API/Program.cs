@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TravelingApp.Application.Abstractions;
 using TravelingApp.Infraestructure.Context;
-using TravelingApp.Ui;
-using TravelingApp.Ui.Middleware;
+using TravelingApp.API;
+using TravelingApp.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 

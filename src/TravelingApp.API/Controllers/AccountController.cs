@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TravelingApp.Application.Features.Account.Commands.Login;
 using TravelingApp.Application.Features.Account.Commands.Register;
 
-namespace TravelingApp.Ui.Controllers
+namespace TravelingApp.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

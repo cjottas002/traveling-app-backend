@@ -17,7 +17,7 @@ using FluentValidation;
 using TravelingApp.Application.Features.Account.Commands.Login;
 using TravelingApp.Application.Features.Users.Queries.ListUsers;
 
-namespace TravelingApp.Ui
+namespace TravelingApp.API
 {
     public static class DependencyContainer
     {

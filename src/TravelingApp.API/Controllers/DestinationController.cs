@@ -7,7 +7,7 @@ using TravelingApp.Application.Features.Destinations.Commands.Update;
 using TravelingApp.Application.Features.Destinations.Queries.GetById;
 using TravelingApp.Application.Features.Destinations.Queries.List;
 
-namespace TravelingApp.Ui.Controllers
+namespace TravelingApp.API.Controllers
 {
     [ApiController]
     [Authorize]

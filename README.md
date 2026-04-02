@@ -21,7 +21,7 @@ src/
   TravelingApp.Domain/           Entidades de dominio
   TravelingApp.Application/      Handlers CQRS, DTOs, interfaces, behaviors, config
   TravelingApp.Infraestructure/  DbContext, migraciones, servicios (Redis, seed)
-  TravelingApp.Ui/               Entry point: controllers, middleware, DI, Swagger
+  TravelingApp.API/               Entry point: controllers, middleware, DI, Swagger
 test/
   TravelingApp.UnitTest/         Tests unitarios con NUnit
 ```
@@ -40,7 +40,7 @@ El archivo `appsettings.Development.json` contiene los valores para desarrollo l
 ## Ejecucion
 
 ```bash
-dotnet run --project src/TravelingApp.Ui
+dotnet run --project src/TravelingApp.API
 ```
 
 La API estara disponible en `http://localhost:5000` con Swagger UI en la raiz.
