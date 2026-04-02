@@ -1,6 +1,7 @@
 services:
   traveling-app:
     container_name: traveling-app
+    image: traveling-app-alpine
     build:
       context: ..
       dockerfile: src/TravelingApp.Ui/Dockerfile
