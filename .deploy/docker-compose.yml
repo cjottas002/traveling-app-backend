@@ -14,13 +14,13 @@ services:
 
   postgres-traveling-app:
     container_name: postgres-traveling-app
-    image: postgres:17
+    image: postgres:18.3-alpine
     networks:
       - traveling-network
 
   redis-traveling-app:
     container_name: redis-traveling-app
-    image: redis:7.0.15
+    image: redis:8.6.2-alpine
     networks:
       - traveling-network
 
