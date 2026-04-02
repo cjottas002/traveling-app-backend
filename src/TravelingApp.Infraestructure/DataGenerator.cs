@@ -28,7 +28,8 @@ namespace TravelingApp.Infraestructure
 
             var users = new List<(string idusuario, string username, string email, string password, string role)>
             {
-                ("1234567A", "admin", "admin@test.com", "Admin123!", "admin")
+                ("1234567A", "admin", "admin@test.com", "Admin123!", AppConstant.RolAdmin),
+                ("1234567B", "customer1", "customer1@test.com", "Customer1!", AppConstant.RolCustomer)
             };
 
             foreach (var (idusuario, username, email, password, role) in users)
