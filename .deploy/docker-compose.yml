@@ -13,8 +13,6 @@ services:
       - Jwt__Issuer=${JWT_ISSUER}
       - Jwt__Audience=${JWT_AUDIENCE}
       - Jwt__ExpireMinutes=${JWT_EXPIRE_MINUTES}
-    ports:
-      - "${TRAVELINGAPP_PORT}:${ASPNETCORE_HTTP_PORTS}"
     depends_on:
       postgres-traveling-app:
         condition: service_healthy
@@ -39,8 +37,6 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    ports:
-      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -56,8 +52,6 @@ services:
     container_name: redis-traveling-app
     image: redis:7.0.15
     command: ["redis-server", "--save", "", "--appendonly", "no", "--loglevel", "warning"]
-    ports:
-      - "${REDIS_PORT}:6379"
     restart: always
     networks:
       - traveling-network

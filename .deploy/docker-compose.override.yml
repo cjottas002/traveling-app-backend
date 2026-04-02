@@ -1,0 +1,14 @@
+services:
+  traveling-app:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "${TRAVELINGAPP_PORT}:${ASPNETCORE_HTTP_PORTS}"
+
+  postgres-traveling-app:
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+  redis-traveling-app:
+    ports:
+      - "${REDIS_PORT}:6379"
