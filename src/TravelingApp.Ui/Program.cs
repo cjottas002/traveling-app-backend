@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using TravelingApp.Application.Abstractions;
+using TravelingApp.Infraestructure.Context;
 using TravelingApp.Ui;
 using TravelingApp.Ui.Middleware;
 
@@ -14,6 +16,9 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
+    var db = scope.ServiceProvider.GetRequiredService<TravelingAppDbContext>();
+    await db.Database.MigrateAsync();
+
     var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
     await seeder.SeedAsync();
 }
