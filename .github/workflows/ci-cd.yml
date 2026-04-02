@@ -1,0 +1,109 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DOTNET_VERSION: '10.0.x'
+  DOCKER_IMAGE: traveling-app-alpine
+
+jobs:
+  # ── Build & Test ──────────────────────────────────
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18.3-alpine
+        env:
+          POSTGRES_DB: TravelingAppDb
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+      redis:
+        image: redis:8.6.2-alpine
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Run tests
+        run: dotnet test --no-build --configuration Release --verbosity normal
+        env:
+          ConnectionStrings__TravelingAppDbConnection: "Host=localhost;Port=5432;Database=TravelingAppDb;Username=postgres;Password=postgres"
+          ConnectionStrings__RedisDbConnection: "localhost:6379"
+          Jwt__Key: "ci-cd-test-key-at-least-32-characters-long!"
+          Jwt__Issuer: "TravelAuth"
+          Jwt__Audience: "TravelAPI"
+
+  # ── Docker Build ──────────────────────────────────
+  docker:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t ${{ env.DOCKER_IMAGE }}:${{ github.sha }} \
+            -t ${{ env.DOCKER_IMAGE }}:latest \
+            -f src/TravelingApp.API/Dockerfile .
+
+  # ── Deploy ────────────────────────────────────────
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: docker
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # TODO: Configurar cuando haya servidor de producción
+      # 1. Push de la imagen a un registry (Docker Hub, GitHub Container Registry, etc.)
+      # 2. SSH al servidor y hacer docker compose pull + up
+      #
+      # Ejemplo con SSH:
+      # - name: Deploy via SSH
+      #   uses: appleboy/ssh-action@v1
+      #   with:
+      #     host: ${{ secrets.SERVER_HOST }}
+      #     username: ${{ secrets.SERVER_USER }}
+      #     key: ${{ secrets.SERVER_SSH_KEY }}
+      #     script: |
+      #       cd /opt/traveling-app
+      #       docker compose pull
+      #       docker compose up -d --remove-orphans
+
+      - name: Deploy placeholder
+        run: echo "Deploy pendiente — servidor de producción no configurado"
