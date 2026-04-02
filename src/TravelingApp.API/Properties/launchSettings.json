@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "TravelingApp.API": {
+    "http Development": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -11,15 +11,14 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://0.0.0.0:5090"
     },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+    "http Production": {
+      "commandName": "Project",
+      "launchBrowser": false,
       "environmentVariables": {
-        "ASPNETCORE_HTTP_PORTS": "8080"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       },
-      "publishAllPorts": true,
-      "useSSL": false
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://0.0.0.0:5090"
     }
   }
 }
